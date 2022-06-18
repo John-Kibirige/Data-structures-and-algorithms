@@ -1,0 +1,28 @@
+
+https://www.youtube.com/watch?v=aPQY__2H3tE
+
+
+https://www.youtube.com/watch?v=Qmt0QwzEmh0&list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&index=1
+
+
+From Leet code 
+https://leetcode.com/discuss/general-discussion/1050391/Must-do-Dynamic-programming-Problems-Category-wise
+
+
+Leet code : graph algorithms 
+https://leetcode.com/discuss/study-guide/1326900/graph-algorithms-problems-to-practice
+
+
+leet code : dynamic programming problems 
+https://leetcode.com/discuss/general-discussion/1000929/solved-all-dynamic-programming-dp-problems-in-7-months
+
+
+leet code : binary search trees
+https://leetcode.com/tag/tree/
+
+
+some algo's on hacker earth 
+https://www.hackerearth.com/practice/algorithms/graphs/depth-first-search/practice-problems/
+
+leet code repo 
+https://leetcode.com/problemset/all/?topicSlugs=binary-search%2Cdepth-first-search%2Cbreadth-first-search%2Ctree
