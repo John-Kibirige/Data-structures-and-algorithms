@@ -1,46 +1,60 @@
 // https://www.hackerrank.com/challenges/bigger-is-greater/problem
 
 function biggerIsGreater(w) {
-   let len = w.length;
-   let mark;
+   const len = w.length;
 
-   let i = len - 2;
-   while (i >= 0) {
-      let curr = w[i];
-      let prev = w[i + 1];
-      if (curr < prev) {
-         mark = i;
+   let mark;
+   let counter = len - 2;
+   let collectPrev = "";
+
+   // use a while loop to track the index at which the prev value is greater than the current while
+   // moving backwards
+   while (counter >= 0) {
+      let currChar = w[counter];
+      let prevChar = w[counter + 1];
+      collectPrev += prevChar;
+      if (prevChar > currChar) {
+         mark = counter;
          break;
       }
-      i--;
+      counter--;
    }
 
-   let strSectionOne = w.slice(0, mark);
-   let strSectionTwo = w.slice(mark + 1);
-   let [big, small] = getSmallAndSecondBig(strSectionTwo);
-   strSectionTwo = strSectionTwo.split("");
-   strSectionTwo.splice(strSectionTwo.indexOf(big), 1);
-   strSectionTwo.splice(strSectionTwo.indexOf(small), 1);
-   strSectionTwo.push(w[mark]);
-   strSectionTwo = strSectionTwo.sort().join("");
+   // the mark will be now used to get the desired
 
-   return `${strSectionOne}${big}${small ? small : ""}${strSectionTwo}`;
+   if (mark !== undefined) {
+      let remainingString = w.slice(mark + 1);
+      let stringSectionOne = w.slice(0, mark);
+      let midChar = getSmallestBig(w[mark], remainingString);
+      let stringSectionTwo = customSplice(
+         remainingString,
+         remainingString.indexOf(midChar)
+      );
+
+      stringSectionTwo += w[mark];
+      stringSectionTwo = stringSectionTwo.split("").sort().join("");
+      return stringSectionOne + midChar + stringSectionTwo;
+   } else {
+      return "no answer";
+   }
 }
 
-// determine the smallest and second largest;
-function getSmallAndSecondBig(str) {
-   str = str.split("").sort().join("");
-   let small = str[0];
-   let big = undefined;
-   for (let i = 1; i < str.length; i++) {
-      let curr = str[i];
-      if (big === undefined) {
-         if (curr > small) big = curr;
-      } else {
-         if (curr > small && curr < big) {
-            big = curr;
-         }
+// helper function for getting the smallest big character that is greater than specified character  in a string
+function getSmallestBig(char, string) {
+   string = string.split("").sort().join("");
+   let count = 0;
+
+   while (count < string.length) {
+      if (string[count] > char) {
+         return string[count];
       }
+      count++;
    }
-   return [small, big];
+}
+
+// fabricating a custom made splice method for strings
+function customSplice(string, index) {
+   string = string.split("");
+   string.splice(index, 1);
+   return string.join("");
 }
